@@ -25,17 +25,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::controller(ToDosController::class)->group(function () {
         Route::get('/todos', 'index');
         Route::post('/todos', 'store');
+        Route::get('/todos/{id}', 'single');
+        Route::post('/todos/update/{id}', 'update');
+        Route::post('/todos/completed/{id}', 'completed');
+        Route::delete('/todos/{id}', 'destroy');
     });
 });
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->middleware(["auth:sanctum"]);
-
-Route::get('test', function () {
-    $data = [
-        'name' => 'ahmed',
-        'age' => 19,
-    ];
-    return ApiResponse::response(201, 'Testing response', $data);
-});
