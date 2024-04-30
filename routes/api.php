@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/todos', 'index');
         Route::post('/todos', 'store');
         Route::get('/todos/{id}', 'single');
-        Route::post('/todos/update/{id}', 'update');
+        Route::put('/todos/update/{id}', 'update');
         Route::post('/todos/completed/{id}', 'completed');
         Route::delete('/todos/{id}', 'destroy');
     });
